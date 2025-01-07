@@ -1,1 +1,1 @@
-Tjhis project dives into Networking basics.
+This project dives into Networking basics.
