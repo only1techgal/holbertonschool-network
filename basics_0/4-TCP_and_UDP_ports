@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script displays listening ports, showing the PID and name of the program for each socket.
+
+# Check if the `ss` command is available
+if command -v ss &> /dev/null; then
+    # Use `ss` command if available
+    sudo ss -tuln -p
+elif command -v netstat &> /dev/null; then
+    # Fallback to `netstat` if `ss` is not available
+    sudo netstat -tuln -p
+else
+    echo "Error: Neither 'ss' nor 'netstat' commands are available on this system."
+    exit 1
+fi
