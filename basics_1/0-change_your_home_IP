@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# This script configures an Ubuntu server.
+
+# Define thye mappings
+LOCALHOST_MAPPING="127.0.0.2 localhost"
+FACEBOOK_MAPPING="8.8.8.8 facebook.com"
+
+# Backup the original /etc/hosts file
+sudo cp /etc/hosts /etc/hosts.backup
+echo "Backup of /etc/hosts created as /etc/hosts.backup"
+
+# Add or update the mappings
+# Remove existing entries to avoid duplicates
+sudo sed -i '/127\.0\.0\.2 localhost/d' /etc/hosts
+sudo sed -i '/8\.8\.8\.8 facebook\.com/d' /etc/hosts
+
+# Append new mappings to /etc/hosts
+echo "$LOCALHOST_MAPPING" | sudo tee -a /etc/hosts
+echo "$FACEBOOK_MAPPING" | sudo tee -a /etc/hosts
+
+# Step 4: Display the updated file
+echo "Updated /etc/hosts file:"
+cat /etc/hosts
