@@ -2,6 +2,4 @@
 # This script displays al active IPv4 IPs on the machine it is executed on.
 
 # Extract all active IPv4 addresses
-ip -4 addr show | grep -oP '(?<=inet\s)\d+(\.\d+){3}' | while read -r ip; do
-    echo "$ip"
-done
+ifconfig | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
