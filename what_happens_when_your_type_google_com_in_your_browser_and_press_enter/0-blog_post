@@ -1,0 +1,86 @@
+# What happens when you type https://www.google.com in your browser and press **Enter**?
+
+Let’s say you are just sitting on your laptop, typing “https: //www.google.com” into the browser. You hit enter and within half a second, Google’s homepage loads. That’s the surface of a great miracle happening on the internet. But have you ever thought about what goes behind that magic? Like, the fact that your browser knows where Google is, or the fact that some hacker won’t be intercepting your search for "best memes of 2023" all while securely loading the page. So, let’s go step by step—get ready for a thrilling ride through the internet.
+
+
+1. DNS Request: “Hey, Where’s Google?”
+
+Let us say for now that google.com or even www.google.com exists, when in fact is not the case. First, your browser has to figure out the physical location of google.com. Sadly, the internet does not recognize domain names that are friendly like google.com, it uses something called IP addresses, which are essentially coordinates in number form, for example, 142.250.190.14. Thus, your browser makes use of a DNS or Domain Name System and takes the liberty of asking a DNS server the question, “Does anybody know what the IP address for google.com is?”
+
+
+This DNS request passes through a sequence of processes:
+
+Your browser checks its cache (“Uh, didn’t I do this already?”) 
+If the cache does not contain the search then it goes and asks your operating system. 
+
+If your operating system is uninformed, there’s an OS resolver that can usually be made available by your ISP or one of Goggle’s public ones like 8.8.8.8 that can be used to send the request. 
+
+The resolver then sends requests to the root DNS and TLD servers in that respective order. In the end, the authoritative DNS servers for google.com are contacted.Your browser responds with a smile, “Cool, got it. Let’s go!”
+
+2. TCP/IP: The Postal Carrier of the Internet  
+
+Your browser now has Google’s IP address but needs to make the connection first. This is where TCP/IP (Transmission Control Protocol/Internet Protocol) comes in. It is more like the postal service of the Internet. Your browser firstly uses TCP to ask Google’s server for the information that he needs because his TCP will ensure that the information is sent in sequence and accurately.  
+
+Here is the kicker: your browser and Google’s server first initiate a joint session (therefore the need for TCP three way handshake) which makes sure that every party is willing to send or receive information. In simple terms, it is akin to:  
+
+Your Browser: “Hey you there?”  
+Google’s Server: “Yep, I am here, you good?”  
+Your Browser: “Cool, let’s do this.”  
+
+Once the handshake is done, they are ready to exchange the data.  
+
+3. Firewall: The Bouncer  
+
+Prior to having your request sent to Google’s servers, it may first pass through a firewall. A firewall is like a bouncer at a club; it examines both the incoming and the outgoing traffic to ensure that there are no malicious activities. If your request seems to be containing no malicious intents (and it shouldn’t because you are just trying to google something), the firewall opens it.
+
+4. HTTPS/SSL : The bodyguard
+
+You probably realized by now that the URL starts with 'https' rather than 'http.' That "s" means secure, which denotes that your connection has been encrypted through SSL/TLS (Secure Sockets Layer / Transport Layer Security). This is of utmost significance because it safeguards you against anyone eavesdropping on your information in transition.  
+
+The following is how it operates:  
+
+Your browser and Google servers Establish an agreement on a secret code(encryption keys) in the course of the SSL handshake.   
+
+Subsequently, all the information exchanged between you and Google is encryptically encoded using these keys, henceforth making it impossible to decipher even for people who intercept it. 
+
+5. Load Balancer: The Traffic Cop
+
+Google receives billions of queries on a daily basis and there is no way they can rely on a set server to cope with all that traffic. As a result, they rely on a load balancer, which is similar to a traffic officer allocating vehicles to various lanes. The balancer takes your request and passes it on to any one of Google’s servers. This way, no individual server is relied on too much.
+
+6. Web Server: The Front Desk
+
+After your request hits one of Google’s servers, it hits the web server. The web server’s role is to serve static content, such as the HTML, CSS and JavaScript on Google’s homepage. It pulls these files and returns them to your browser.
+
+7. Application Server: The Brain
+
+If your request is for something a little more complicated (such as searching for “best memes of 2023”), the web server may forward your request to an application server.This is where all the magic happens, the application server executes your logic to process your search query, connects with the database, and generates dynamic HTML.
+
+8. Database: The Librarian
+
+With a search engine like Google, it is the place where all indexed web pages and search results would end up. If you search something, the application server queries the database to fetch the most relevant results. This data is then returned by the database to the application server, which formats it and returns
+
+Putting It All Together
+
+After all the data has been prepared, it is passed back along the same one attribute chain: application server → web server → load balancer → your web browser. Your browser then renders all that HTML, CSS, and JavaScript to show you Google’s homepage on your screen. And voilà! You are set to look for memes.
+
+Recap:
+
+- Your browser queries DNS for the IP address of Google.
+
+- It opens a TCP connection with the Google’s server.
+
+- A firewall verifies that request.
+
+- SSL/TLS is used for data encryption by HTTPS.
+
+- A load balancer directs your request to a server.
+
+- The web server handles static content.
+
+- The application server processes dynamic content.
+
+- The database stores and retrieves data.
+
+- Everything gets sent back to your browser, which renders the page.
+
+And that’s how you get from typing "https://www.google.com" to seeing the Google homepage in under a second. The internet is wild, huh?
